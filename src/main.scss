@@ -241,10 +241,16 @@ header {
         }
       }
 
+      p {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
       .chip {
         box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
         padding: 0.5rem 3rem;
-        margin: 0 1rem;
+        margin: 1rem;
         font-size: 1.5rem;
 
         @media screen and (max-width: 768px) {
