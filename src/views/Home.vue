@@ -12,7 +12,7 @@
         <select @change="filterCountry" v-model="filterOption" name="region" id="region">
           <option selected disabled value="filter">Filter By Region</option>
           <option value="Africa">Africa</option>
-          <option value="America">America</option>
+          <option value="Americas">America</option>
           <option value="Asia">Asia</option>
           <option value="Europe">Europe</option>
           <option value="Oceania">Oceania</option>

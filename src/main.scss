@@ -23,6 +23,7 @@ html {
 
 #app {
   min-height: 100vh;
+  transition: all .3s;
 }
 
 #app.light {
@@ -83,8 +84,8 @@ img {
 
 .container {
   max-width: 140rem;
-  margin: 5rem auto;
-  padding: 0 3rem;
+  margin: 0 auto;
+  padding: 3rem;
 }
 
 .grid {
@@ -108,20 +109,32 @@ img {
 header {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   padding: 3rem;
+  transition: all .3s;
 
   .container {
-    margin: 0 auto;
+    padding: 0 3rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    .themeToggle {
-      border: none;
-      background-color: transparent;
-      font-size: 1.6rem;
-      outline: none;
-      cursor: pointer;
+    .themeToggleWrapper {
+      display: flex;
+      align-items: center;
+
+      svg {
+        margin-right: 1rem;
+      }
+
+      .themeToggle {
+        border: none;
+        background-color: transparent;
+        font-size: 1.6rem;
+        outline: none;
+        cursor: pointer;
+      }
     }
+
+    
 
     @media screen and (max-width: 480px) {
       padding: 0;
@@ -302,6 +315,12 @@ header {
 .card {
   box-shadow: 0 0 14px 1px rgba(0, 0, 0, 0.3);
   border-radius: 0.7rem;
+  cursor: pointer;
+  transition: all .3s;
+
+  &:hover {
+    transform: scale(1.03);
+  }
 
   img {
     height: 17rem;
