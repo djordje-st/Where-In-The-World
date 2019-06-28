@@ -7,7 +7,12 @@
       <div class="search">
         <form @submit.prevent="searchCountries">
           <IosSearchIcon w="20px" h="20px"/>
-          <input type="text" v-model="searchTerm" placeholder="Search for a country...">
+          <input
+            type="text"
+            name="seach_countries"
+            v-model="searchTerm"
+            placeholder="Search for a country..."
+          >
         </form>
         <select @change="filterCountry" v-model="filterOption" name="region" id="region">
           <option selected disabled value="filter">Filter By Region</option>
