@@ -1,0 +1,333 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700&display=swap");
+
+$primaryLight: hsl(200, 15%, 8%);
+$secondaryLight: hsl(0, 0%, 100%);
+$bgLight: hsl(0, 0%, 98%);
+
+$primaryDark: hsl(0, 0%, 100%);
+$secondaryDark: hsl(209, 23%, 22%);
+$bgDark: hsl(207, 26%, 17%);
+
+$input: hsl(0, 0%, 52%);
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+#app.light {
+  background-color: $bgLight;
+
+  a {
+    text-decoration: none;
+    color: $primaryLight;
+  }
+
+  header,
+  input,
+  select,
+  .back,
+  .chip,
+  .card {
+    background-color: $secondaryLight;
+    color: $primaryLight;
+  }
+
+  .countryInfo,
+  h1 {
+    color: $primaryLight;
+  }
+}
+
+#app.dark {
+  background-color: $bgDark;
+
+  a {
+    text-decoration: none;
+    color: $primaryDark;
+  }
+
+  header,
+  input,
+  select,
+  .back,
+  .chip,
+  .card {
+    background-color: $secondaryDark;
+    color: $primaryDark;
+
+    &::placeholder {
+      color: $primaryDark;
+    }
+  }
+
+  .countryInfo,
+  h1 {
+    color: $primaryDark;
+  }
+}
+
+img {
+  width: 100%;
+}
+
+.container {
+  max-width: 140rem;
+  margin: 5rem auto;
+  padding: 0 3rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 50px;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 480px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.loading {
+  text-align: center;
+}
+
+header {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  padding: 3rem;
+
+  .container {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .themeToggle {
+      border: none;
+      background-color: transparent;
+      font-size: 1.6rem;
+      outline: none;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 480px) {
+      padding: 0;
+    }
+  }
+}
+
+.dark .themeToggle {
+  color: $secondaryLight;
+}
+
+.light .themeToggle {
+  color: $secondaryDark;
+}
+
+.back {
+  display: inline-block;
+  padding: 1rem 2rem;
+  box-shadow: 0 0 0.5rem 0.1rem rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
+  margin: 0 4rem;
+  font-size: 1.5rem;
+  position: relative;
+
+  span {
+    padding-left: 3rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin: 0;
+  }
+
+  .ion {
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%);
+  }
+}
+
+.country {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  img,
+  .countryInfo {
+    width: 50%;
+    padding: 4rem;
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      padding: 2rem 0;
+    }
+  }
+
+  .countryInfo {
+    h1 {
+      margin-bottom: 3.5rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
+
+    .title {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .countryMeta {
+      display: grid;
+      grid-template-rows: repeat(3, 1fr);
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 1rem;
+
+      @media screen and (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .mx-1 {
+      margin: 0 0.2rem;
+
+      &:after {
+        content: ",";
+      }
+
+      &:last-child:after {
+        display: none;
+      }
+    }
+
+    .borders {
+      margin-top: 5rem;
+
+      @media screen and (max-width: 768px) {
+        .title {
+          display: block;
+          margin-bottom: 2rem;
+        }
+      }
+
+      .chip {
+        box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
+        padding: 0.5rem 3rem;
+        margin: 0 1rem;
+        font-size: 1.5rem;
+
+        @media screen and (max-width: 768px) {
+          display: inline-block;
+          margin: 0.5rem 1rem;
+        }
+      }
+
+      .mx-1:after {
+        display: none;
+      }
+    }
+  }
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+  }
+
+  form input,
+  select {
+    padding: 1.5rem;
+    border: none;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    width: 25rem;
+    font-size: 1.5rem;
+
+    @media screen and (max-width: 480px) {
+      width: 100%;
+      margin: 1rem 0;
+    }
+  }
+
+  form {
+    position: relative;
+
+    @media screen and (max-width: 480px) {
+      width: 100%;
+    }
+
+    .ion {
+      position: absolute;
+      top: 50%;
+      left: 1rem;
+      transform: translateY(-50%);
+
+      fill: #626362;
+    }
+
+    input {
+      text-indent: 3rem;
+      color: $input;
+
+      ::placeholder {
+        color: $input;
+      }
+    }
+  }
+}
+
+.card {
+  box-shadow: 0 0 14px 1px rgba(0, 0, 0, 0.3);
+  border-radius: 0.7rem;
+
+  img {
+    height: 17rem;
+    object-fit: cover;
+    border-radius: 0.7rem 0.7rem 0 0;
+  }
+
+  .cardInfo {
+    padding: 0 2rem;
+
+    h3 {
+      margin: 2rem 0;
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+
+      &:last-child {
+        margin-bottom: 3rem;
+      }
+    }
+  }
+
+  .cardTitle {
+    font-weight: bold;
+  }
+}

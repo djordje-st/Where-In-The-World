@@ -1,6 +1,8 @@
 .DS_Store
 node_modules
 /dist
+style-guide.md
+design/
 
 # local env files
 .env.local

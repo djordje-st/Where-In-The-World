@@ -5,12 +5,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-
+    searchTerm: '',
+    themeToggle: null
   },
   mutations: {
-
-  },
-  actions: {
-
+    searchTerm(state, payload) {
+      state.searchTerm = payload
+    },
+    themeToggle(state) {
+      state.themeToggle = !state.themeToggle
+    }
   }
 })
