@@ -36,10 +36,8 @@ export default {
     this.$axios
       .get(`https://restcountries.eu/rest/v2/name/${this.search}`)
       .then(res => {
-        if (this.results.length > 0) {
-          this.loading = false;
-          this.results = res.data;
-        }
+        this.loading = false;
+        this.results = res.data;
       })
       .catch(err => {
         console.error(err);
