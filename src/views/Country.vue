@@ -64,7 +64,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import IosArrowRoundBackIcon from "vue-ionicons/dist/ios-arrow-round-back.vue";
 import IosRefreshIcon from "vue-ionicons/dist/ios-refresh.vue";
 
@@ -82,7 +81,7 @@ export default {
   },
   methods: {
     getCountry() {
-      axios
+      this.$axios
         .get(
           `https://restcountries.eu/rest/v2/alpha?codes=${this.$route.params.id}`
         )

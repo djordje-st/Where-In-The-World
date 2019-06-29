@@ -1,17 +1,17 @@
 <template>
   <div class="searchResults">
     <div v-if="loading" class="loading">
-      <IosRefreshIcon w="60px" h="60px" animate="rotate"/>
+      <IosRefreshIcon w="60px" h="60px" animate="rotate" />
     </div>
     <center v-if="!loading">
-      <h1>Search results for "{{ search }}".</h1>
+      <h1 v-if="results.length > 0">Search results for "{{ search }}".</h1>
+      <h1 v-else>Sorry, no results for "{{ search }}."</h1>
     </center>
-    <CountryCard :countries="results"/>
+    <CountryCard :countries="results" />
   </div>
 </template>
 
 <script>
-import axios from "axios";
 import CountryCard from "@/components/CountryCard";
 import IosRefreshIcon from "vue-ionicons/dist/ios-refresh.vue";
 
@@ -33,10 +33,16 @@ export default {
     }
   },
   created() {
-    axios
+    this.$axios
       .get(`https://restcountries.eu/rest/v2/name/${this.search}`)
       .then(res => {
-        this.results = res.data;
+        if (this.results.length > 0) {
+          this.loading = false;
+          this.results = res.data;
+        }
+      })
+      .catch(err => {
+        console.error(err);
         this.loading = false;
       });
   }
