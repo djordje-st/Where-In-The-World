@@ -1,14 +1,14 @@
 <template>
   <div class="countryWrapper">
     <div v-if="loading" class="loading">
-      <IosRefreshIcon w="60px" h="60px" animate="rotate"/>
+      <IosRefreshIcon w="60px" h="60px" animate="rotate" />
     </div>
     <router-link v-if="!loading" class="back" to="/">
-      <IosArrowRoundBackIcon w="25px" h="25px"/>
+      <IosArrowRoundBackIcon w="25px" h="25px" />
       <span>Back</span>
     </router-link>
     <div v-if="!loading" class="country">
-      <img :src="country.flag" :alt="country.name">
+      <img :src="country.flag" :alt="country.name" />
       <div class="countryInfo">
         <h1>{{ country.name }}</h1>
         <div class="countryMeta">
@@ -53,7 +53,9 @@
         <div class="borders" v-if="country.borders.length > 0">
           <p>
             <span class="title">Border Countries:</span>
-            <span v-for="(border, i) in country.borders" :key="i" class="chip mx-1">{{ border }}</span>
+            <span v-for="(border, i) in country.borders" :key="i" class="chip mx-1">
+              <router-link :to="'/country/' + border">{{ border }}</router-link>
+            </span>
           </p>
         </div>
       </div>
@@ -78,16 +80,24 @@ export default {
       loading: true
     };
   },
-  created() {
-    axios
-      .get(
-        `https://restcountries.eu/rest/v2/callingcode/${this.$route.params.id}`
-      )
-      .then(res => {
-        this.country = res.data[0];
-        this.loading = false;
-      })
-      .catch(err => console.error(err));
+  methods: {
+    getCountry() {
+      axios
+        .get(
+          `https://restcountries.eu/rest/v2/alpha?codes=${this.$route.params.id}`
+        )
+        .then(res => {
+          this.country = res.data[0];
+          this.loading = false;
+        })
+        .catch(err => console.error(err));
+    }
+  },
+  mounted() {
+    this.getCountry();
+  },
+  updated() {
+    this.getCountry();
   }
 };
 </script>
